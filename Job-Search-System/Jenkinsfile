@@ -8,14 +8,6 @@ pipeline {
                }
     }
   
-    stage('Unit Test') {
-       steps {
-            echo 'Project Testing stage'
-            bat label: 'Test running', script: '''mvn test'''
-         
-       }
-       }
-  
     stage('Maven Package'){
         steps{
             echo 'Project packaging stage'
@@ -35,7 +27,15 @@ pipeline {
                 -Dsonar.host.url=http://localhost:9000 \
                 -Dsonar.login=e98ca284203146886bbf8a08359df4fb180fdbbf'''
             }
-           }     
+           }  
+            
+      stage('Unit Test') {
+       steps {
+            echo 'Project Testing stage'
+            bat label: 'Test running', script: '''mvn test'''
+         
+       }
+       }  
   
   }
 }
