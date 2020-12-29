@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,10 +25,10 @@ public class FavoriteJobs {
 	@Column(name="id",nullable=false)
 	private Integer favJob_id;
 	@ManyToOne
-	@JoinColumn(name="jobseeker_id")
+	@JoinColumn(name="jobseeker_id",nullable=false)
 	private JobSeeker jobseeker;
 	@ManyToOne
-	@JoinColumn(name="job_id")
+	@JoinColumn(name="job_id",nullable=false)
 	private Job job;
 	
 	//	@Override

@@ -1,7 +1,6 @@
  package com.cg.entity;
 import java.util.ArrayList;
 import java.util.Collection;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,9 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -74,6 +71,10 @@ public class Job {
 	public Job(String title) {
 		super();
 		this.title = title;
+	}
+	public Job(Integer id) {
+		super();
+		this.id = id;
 	}
 
 	
