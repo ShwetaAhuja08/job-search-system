@@ -10,18 +10,10 @@ pipeline {
   
     
    
-     stage('Jacoco Coverage Report') {
-            steps{
-                    jacoco()
-        }
+     
     }
       
-    stage('SonarQube'){
-        steps{
-                bat label: '', script: '''mvn sonar:sonar \
-                -Dsonar.host.url=http://localhost:9000 \
-                -Dsonar.login=22eebb888d88b120829b708c0495b87acf7ed5ac'''
-            }
+    
            }  
             
       stage('Unit Test') {

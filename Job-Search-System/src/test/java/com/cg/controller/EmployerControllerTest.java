@@ -1,5 +1,5 @@
 package com.cg.controller;
-
+//I added this
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -56,32 +56,32 @@ public class EmployerControllerTest {
 
     @Test
     public void whenValidInput_thenRegisterEmployer() throws IOException, Exception {
-    	Employer infosys = new Employer("Infosys");
-    	Employer tcs = new Employer("TCS");
+    	Employer Capgingo = new Employer("capgingo");
+    	Employer Infosys = new Employer("infosys");
     	
-    	mvc.perform(post("/jss/employers").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJson(infosys)));
-    	mvc.perform(post("/jss/employers").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJson(tcs)));
+    	mvc.perform(post("/jss/employers").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJson(Capgingo)));
+    	mvc.perform(post("/jss/employers").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJson(Infosys)));
     	
     	List<Employer> found = employerSpringDatadao.findAll();
-        assertThat(found).extracting(Employer::getOrganizationName).containsOnly("Infosys","TCS");
+        assertThat(found).extracting(Employer::getOrganizationName).containsOnly("capgingo","infosys");
     	
     	    	
     }
     @Test
     public void whenValidInput_thenPostAJob() throws IOException, Exception {
-    	Job j1 = new Job("Business Analyst");
-    	Job j2 = new Job("Data Analyst");
+    	Job j1 = new Job("Developer");
+    	//Job j2 = new Job("Data Analyst");
     	
-    	mvc.perform(post("/jss/employers/postAJob/59").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJson(j1)));
-    	mvc.perform(post("/jss/employers/postAJob/60").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJson(j2)));
+    	mvc.perform(post("/jss/employers/postAJob/3").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJson(j1)));
+    	//mvc.perform(post("/jss/employers/postAJob/60").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJson(j2)));
     	
     	List<Job> found = jobSpringDatadao.findAll();
-        assertThat(found).extracting(Job::getTitle).containsOnly("Business Analyst","Data Analyst");	
+        assertThat(found).extracting(Job::getTitle).containsOnly("Developer");	
     	    	
     }
     @Test
 	public void givenPostAJob_whenGetJobById_thenStatus200() throws Exception {
-		String id = "72";
+		String id = "10";
 		mvc.perform(get("/jss/employers/{id}",id).accept(MediaType.APPLICATION_JSON))
 		.andExpect(status().isOk())
 		.andExpect(jsonPath("id").exists());
