@@ -45,9 +45,6 @@ public class EmployerServiceTest {
         Employer Capgemini = new Employer("Capgemini");
         Capgemini.setId(2);
 
-        //Employer bob = new Employer("bob");
-        //Employer alex = new Employer("alex");
-
         List<Employer> allEmployers = Arrays.asList(Capgemini);
 
         Mockito.when(employerSpringDataDAO.findByOrganizationName(Capgemini.getOrganizationName())).thenReturn(Capgemini);
